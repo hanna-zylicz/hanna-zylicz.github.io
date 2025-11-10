@@ -774,9 +774,9 @@ section .hero {
   --shadow-soft: 0 10px 30px color-mix(in srgb, var(--default-color), transparent 92%);
 }
 
-.about .container {
-  max-width: var(--maxw);
-}
+/*.about .container {*/
+/*  max-width: var(--maxw);*/
+/*}*/
 
 .about .intro-wrap {
   margin-bottom: var(--space-4);
@@ -1680,12 +1680,12 @@ section .hero {
   left: 0;
   right: 0;
   bottom: 0;
-  background: color-mix(in srgb, var(--accent-color), transparent 50%);
+  background: color-mix(in srgb, var(--accent-color), transparent 80%);
   display: flex;
   align-items: center;
   justify-content: center;
   opacity: 0;
-  visibility: hidden;
+  visibility: visible;
   transition: all 0.4s ease-out;
   backdrop-filter: blur(2px);
 }
