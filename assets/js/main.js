@@ -229,4 +229,65 @@
   window.addEventListener('load', navmenuScrollspy);
   document.addEventListener('scroll', navmenuScrollspy);
 
+
+fetch('portfolio-data.json')
+  .then(response => response.json())
+  .then(items => {
+    const grid = document.querySelector('.portfolio-grid');
+    if (!grid) return;
+    grid.innerHTML = '';
+
+    // Wstawiamy wszystkie elementy
+    items.forEach(item => {
+      const html = `
+        <div class="col-lg-4 col-md-6 portfolio-item isotope-item ${item.filter}">
+          <div class="portfolio-card">
+            <div class="image-container">
+              <img src="${item.image}" class="img-fluid" alt="${item.title}" loading="lazy">
+              <a href="${item.image}"
+                 class="glightbox overlay"
+                 title="${item.title}"
+                 data-description="${item.description.replace(/"/g, '&quot;')}">
+              </a>
+            </div>
+            <div class="content">
+              <h3>${item.title}</h3>
+              <p>${item.subtitle}</p>
+            </div>
+          </div>
+        </div>`;
+      grid.insertAdjacentHTML('beforeend', html);
+    });
+
+    // Teraz ładujemy obrazy, potem inicjujemy Isotope
+    imagesLoaded(grid, () => {
+      const iso = new Isotope(grid, {
+        itemSelector: '.portfolio-item',
+        layoutMode: 'fitRows'
+      });
+
+      // 🔧 ważne: wymuszenie pierwszego przeliczenia wysokości
+      iso.layout();
+
+      // inicjalizujemy glightbox
+      GLightbox({ selector: '.glightbox' });
+
+      // eventy dla filtrów
+      document.querySelectorAll('.portfolio-filters li').forEach(button => {
+        button.addEventListener('click', () => {
+          document.querySelectorAll('.portfolio-filters li').forEach(b => b.classList.remove('filter-active'));
+          button.classList.add('filter-active');
+
+          const filterValue = button.getAttribute('data-filter');
+          iso.arrange({ filter: filterValue });
+
+          // 🔁 po ułożeniu – przelicz layout, żeby sekcja się nie zapadała
+          iso.once('arrangeComplete', () => iso.layout());
+        });
+      });
+    });
+  })
+  .catch(err => console.error('Error loading portfolio:', err));
+
+
 })();
