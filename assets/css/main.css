@@ -2241,12 +2241,6 @@ section .hero {
   transform: translateX(5px);
 }
 
-.contact .contact-sidebar {
-  background: color-mix(in srgb, var(--accent-color), transparent 97%);
-  height: 100%;
-  padding: 60px 40px;
-}
-
 .contact .contact-sidebar .contact-header {
   margin-bottom: 60px;
 }
@@ -2317,11 +2311,6 @@ section .hero {
   margin-bottom: 0;
 }
 
-.contact .contact-sidebar .connect-section {
-  border-top: 1px solid color-mix(in srgb, var(--default-color), transparent 90%);
-  padding-top: 40px;
-}
-
 .contact .contact-sidebar .connect-section .connect-label {
   font-size: 12px;
   font-weight: 600;
@@ -2334,15 +2323,15 @@ section .hero {
 
 .contact .contact-sidebar .connect-section .social-links {
   display: flex;
-  gap: 15px;
+  justify-content: space-evenly;
 }
 
 .contact .contact-sidebar .connect-section .social-links .social-link {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 40px;
-  height: 40px;
+  /*width: 40px;*/
+  /*height: 40px;*/
   color: var(--default-color);
   text-decoration: none;
   transition: all 0.3s ease;
@@ -2357,16 +2346,6 @@ section .hero {
   transform: translateY(-2px);
 }
 
-@media (max-width: 992px) {
-  .contact .contact-form-container {
-    padding: 40px 0;
-  }
-
-  .contact .contact-sidebar {
-    padding: 40px 30px;
-    margin-bottom: 40px;
-  }
-}
 
 @media (max-width: 768px) {
   .contact .contact-form-container .form-intro {
