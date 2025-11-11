@@ -247,7 +247,7 @@ fetch('portfolio-data.json')
               <a href="${item.image}"
                  class="glightbox overlay"
                  title="${item.title}"
-                 data-description="${item.description.replace(/"/g, '&quot;')}">
+                 data-description="<p>${item.subtitle}</p>${item.description.replace(/"/g, '&quot;')}"
               </a>
             </div>
             <div class="content">
