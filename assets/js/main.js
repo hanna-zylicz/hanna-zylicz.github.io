@@ -263,7 +263,8 @@ fetch('portfolio-data.json')
     imagesLoaded(grid, () => {
       const iso = new Isotope(grid, {
         itemSelector: '.portfolio-item',
-        layoutMode: 'fitRows'
+        layoutMode: 'fitRows',
+        filter: '.filter-prowadze',
       });
 
       // 🔧 ważne: wymuszenie pierwszego przeliczenia wysokości
